@@ -2,42 +2,42 @@ angular.module('photoSearcher', ['ngMessages'])
 
 .controller('MainCtrl', ['$scope', '$http', '$sce', '$q', '$timeout', function($scope, $http, $sce, $q, $timeout){
     
+    var vm = $scope;
+    
     function wait() {
         return $q(function(resolve, reject){
             $timeout(function() {
                 resolve();
-            }, 2000);
+            }, 1000);
         });
     }
 
     function notify() {
-        $scope.notifySaved = true;
         return wait().then(function() {
-            $scope.notifySaved = false; 
+            vm.tagname = null;
         });
     }
     
-    $scope.searchPhotos = function(tagname){
+    vm.searchPhotos = function(tagname){
         
         var url = 'https://api.instagram.com/v1/tags/' + tagname + '/media/recent';
         var request = {
             client_id: '79c25bc624914d2fb102c89a94932c55',
-            max_id: 1,
-            min_id: 10,
-            code: '6989b87f8e35495b9028b23c916bd95e'
+            callback: 'JSON_CALLBACK',
+            count: 9
         };
 
-        $http.jsonp(url, {params: request})
+        $http({
+            method: 'JSONP',
+            url: url,
+            params: request
+        })
         .success(function(data, status, headers, config){
-            $scope.photos = data.data;
+            vm.photos = data.data;
             notify();
         })
         .error(function(data, status, headers, config){
-            console.log('Error getting data');
-            console.log(data);
-            console.log(status);
-            console.log(headers);
-            console.log(config);
+            console.log('Error getting data with http status code: ' + status);
         });
     };
 }]);

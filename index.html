@@ -9,7 +9,7 @@
 </head>
 <body ng-app="photoSearcher">
     
-    <div ng-controller="MainCtrl as main" class="container">
+    <div class="container" ng-controller="MainCtrl as main">
         
         <header class="container">
             <div class="row">
@@ -18,15 +18,15 @@
         </header>
         
         <section class="container">
-            <form ng-submit="searchPhotos(tagname)" class="row">
-                <input type="text" ng-model="tagname">
+            <form class="row" ng-submit="searchPhotos(tagname)" novalidate>
+                <input type="text" ng-model="tagname" required>
                 <input type="submit" value="Submit">
             </form>
         </section>
 
-        <section class="container">
+        <section class="container" ng-if="photos">
             <div class="row">
-                <div ng-repeat="photo in photos" class="col-md-4">
+                <div class="col-md-4" ng-repeat="photo in photos">
                     <a ng-href="{{photo.link}}">
                         <img ng-src="{{photo.images.low_resolution.url}}"/>
                     </a>
