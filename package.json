@@ -1,0 +1,8 @@
+{
+	"name": "photo-searcher",
+	"version": "0.0.1",
+	"description": "Instagram Photo Searcher",
+	"dependencies": {
+		"http-server": "latest"
+	}
+}
