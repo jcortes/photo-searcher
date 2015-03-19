@@ -23,7 +23,8 @@ angular.module('photoSearcher', ['ngMessages'])
         var request = {
             client_id: '79c25bc624914d2fb102c89a94932c55',
             max_id: 1,
-            min_id: 10
+            min_id: 10,
+            code: '6989b87f8e35495b9028b23c916bd95e'
         };
 
         $http.jsonp(url, {params: request})
