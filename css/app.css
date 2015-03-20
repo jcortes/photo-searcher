@@ -1,3 +1,22 @@
 body {
     text-align: center;
 }
+
+header {
+    margin-top: 10em;
+    margin-bottom: 1em;
+}
+
+.col-xs-4 {
+    padding: 2em;
+}
+
+img:hover {
+    animation-name: tada;
+    animation-duration: 1s;
+}
+
+.photo {
+    animation-name: zoomIn;
+    animation-duration: 1s;
+}
