@@ -42,7 +42,8 @@ angular.module('photoSearcher', ['ngMessages', 'ngAnimate'])
         var url = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent';
         var request = {
             client_id: '79c25bc624914d2fb102c89a94932c55',
-            callback: 'JSON_CALLBACK'
+            callback: 'JSON_CALLBACK',
+            count: 1000
         };
 
         wait(2000).then(function(){
